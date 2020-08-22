@@ -1,0 +1,5 @@
+i   esp_wifi.h
+
+f   esp_err_to_name             I       s
+f   esp_wifi_set_ps             I       I
+f   esp_wifi_get_ps             IP       I

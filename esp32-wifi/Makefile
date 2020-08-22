@@ -5,11 +5,11 @@ MPY_DIR = /home/esp32/micropython
 GENSTUB = ../genstub/genstub.py
 
 # Name of module
-MOD = modpcnt
+MOD = modesp_wifi_ps
 
 # Source files (.c or .py)
-SRC = modpcnt.c
-SPEC = pcnt.in
+SRC = modesp_wifi_ps.c
+SPEC = esp_wifi_ps.in
 
 # Architecture to build for (x86, x64, armv7m, xtensa, xtensawin)
 ARCH = xtensawin
@@ -28,6 +28,8 @@ include $(MPY_DIR)/py/dynruntime.mk
 include $(MPY_DIR)/ports/$(PORT)/dynruntime.mk
 
 $(MOD).mpy: | $(MPY_DIR)/ports/$(PORT)/port_fun.inc
+
+CFLAGS += -I $(IDF_PATH)/components/newlib/platform_include
 
 $(SRC): $(GENSTUB) $(SPEC) build/sdkconfig.h
 	$(ECHO) "GEN $@"
